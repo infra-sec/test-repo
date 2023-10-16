@@ -3,10 +3,10 @@ name: APPROVE
 on: pull_request
 
 permissions:
-  pull-requests:write
+  pull-requests: write
 jobs:
   approve:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
 
   steps:
-    - run: | curl --request POST --url https://github.com/${{github_repository}} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' -d '{"event": "APPROVE"}'
+    - run: curl --request POST --url https://github.com/${{github_repository}} --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' --header 'content-type: application/json' -d '{"event": "APPROVE"}'
